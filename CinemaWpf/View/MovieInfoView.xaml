@@ -1,0 +1,15 @@
+﻿<Window x:Class="CinemaWpf.View.MovieInfoView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CinemaWpf.View"
+        mc:Ignorable="d"
+        Title="MovieInfoView" Height="250" Width="350">
+    <Border Padding="15">
+    <DockPanel LastChildFill="True">
+        <Label DockPanel.Dock="Top" FontSize="48" FontFamily="Minstral"  Foreground="Beige" HorizontalAlignment="Center" VerticalContentAlignment="Center">Zapisano!</Label>
+        <Label DockPanel.Dock="Top" Content="{Binding Info, FallbackValue='Dane zostały zapisane.'}" VerticalContentAlignment="Center" HorizontalAlignment="Center" />
+    </DockPanel>
+    </Border>
+</Window>

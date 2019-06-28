@@ -1,0 +1,43 @@
+﻿<Page x:Class="CinemaWpf.View.Showings"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CinemaWpf.View"
+      xmlns:ViewModel="clr-namespace:CinemaWpf.ViewModel"
+      mc:Ignorable="d" 
+      Height="650" Width="1160"
+      Title="Showings">
+
+    <Page.DataContext>
+        <ViewModel:ShowingsViewModel />
+    </Page.DataContext>
+    <StackPanel Width="1100" HorizontalAlignment="Center">
+        <StackPanel Height="50">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="6*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Width="180" Height="35" HorizontalAlignment="Left" Command="{Binding AddShowing}">Dodaj seans</Button>
+                <Button Grid.Column="1" Width="120"  HorizontalAlignment="Right" Command="{Binding EditShowing}">Edytuj</Button>
+                <Button Grid.Column="2" Width="120"  HorizontalAlignment="Right" Command="{Binding RemoveShowing}">Usuń</Button>
+            </Grid>
+        </StackPanel>
+        <ListView ItemsSource="{Binding Showings, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Path=SelectedShowing, Mode=TwoWay}" HorizontalAlignment="Center">
+            <ListView.View>
+                <GridView ColumnHeaderToolTip="Informacje o rezervacjach">
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Id}" Header="Id seansu" Width="95" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=MovieId}" Header="Id filmu" Width="95" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=MovieTitle}" Header="Tytuł filmu" Width="375" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=TheatreId}" Header="Id sali" Width="95" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=ShowingDate}" Header="Data seansu" Width="215" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=ShowingHour}" Header="Godzina" Width="215" />
+                </GridView>
+            </ListView.View>
+
+        </ListView>
+
+    </StackPanel>
+</Page>

@@ -1,0 +1,62 @@
+﻿<Window x:Class="CinemaWpf.View.MovieView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CinemaWpf.ViewModel"
+        mc:Ignorable="d"
+        Title="Dodaj film" Height="550" Width="400">
+    
+    <Window.Resources>
+        <local:MovieViewModel x:Key="DataContext" />
+    </Window.Resources>
+    <Border Padding="10">
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="5">
+                <Label Width="80">Tytuł:</Label>
+                <TextBox Name="MovieTitle" Text="{Binding Movie.MovieTitle, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Width="200"></TextBox>
+            </StackPanel>
+            <StackPanel Height="20">
+                <Label Style="{StaticResource error}" Content="{Binding ElementName=MovieTitle, Path=(Validation.Errors).CurrentItem.ErrorContent}" />
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="5">
+                <Label Width="80">Opis:</Label>
+                <TextBox Name="MovieDescription" Text="{Binding Movie.MovieDescription, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Width="200" Height="50" TextWrapping="Wrap"></TextBox>
+            </StackPanel>
+            <StackPanel  Height="20">
+                <Label Style="{StaticResource error}" Content="{Binding ElementName=MovieDescription, Path=(Validation.Errors).CurrentItem.ErrorContent}" />
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="5">
+                <Label Width="80">Kategoria:</Label>
+                <TextBox Name="CategoryName" Text="{Binding Movie.CategoryName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Width="200"></TextBox>
+            </StackPanel>
+            <StackPanel Height="20">
+                <Label Style="{StaticResource error}" Content="{Binding ElementName=CategoryName, Path=(Validation.Errors).CurrentItem.ErrorContent}" />
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="5">
+                <Label Width="80">Kraj:</Label>
+                <TextBox Name="Country" Text="{Binding Movie.Country, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Width="200"></TextBox>
+            </StackPanel>
+            <StackPanel  Height="20">
+                <Label Style="{StaticResource error}" Content="{Binding ElementName=Country, Path=(Validation.Errors).CurrentItem.ErrorContent}" />
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="5">
+                <Label Width="80">Rok:</Label>
+                <TextBox Name="YearOfProduction" Text="{Binding Movie.YearOfProduction, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Width="200"></TextBox>
+            </StackPanel>
+            <StackPanel Height="20">
+                <Label Style="{StaticResource error}" Content="{Binding ElementName=YearOfProduction, Path=(Validation.Errors).CurrentItem.ErrorContent}" />
+            </StackPanel>
+            
+            <Border Padding="10">
+                <Button Width="120" Height="25" Command="{Binding SaveCommand}">Zapisz</Button>
+            </Border>
+
+        </StackPanel>
+    </Border>
+    
+</Window>
